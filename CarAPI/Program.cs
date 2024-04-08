@@ -1,8 +1,13 @@
+using Microsoft.EntityFrameworkCore;
+using CarAPI.Models;
+using CarAPI.Data;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
+builder.Services.AddDbContext<CarDBContext>(opt =>
+    opt.UseInMemoryDatabase("CarDB"));
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
