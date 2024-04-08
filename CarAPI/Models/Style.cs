@@ -6,6 +6,6 @@ namespace CarAPI.Models
         public string StyleName { get; set; } = null!;
         public string? Description { get; set; }
         public int ModelId { get; set; }
-        public ICollection<Car> Cars { get; set; } = null!;
+        public ICollection<Car>? Cars { get; set; }
     }
 }

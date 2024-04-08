@@ -8,7 +8,7 @@ namespace CarAPI.Models
 
         [Key]
         public int LicensePlate  { get; set; }
-        public int MakeId { get; set; } 
+        public int MakeId { get; set; }
         public int ModelId { get; set; }
         public int StyleId { get; set; }
         public int Year { get; set; }

@@ -5,7 +5,7 @@ namespace CarAPI.Models
         public int ModelId { get; set; }
         public string ModelName { get; set; } = null!;
         public int MakeId { get; set; }
-        public ICollection<Car> Cars { get; set; } = null!;
-        public ICollection<Style> Styles { get; set; } = null!;
+        public ICollection<Car>? Cars { get; set; }
+        public ICollection<Style>? Styles { get; set; }
     }
 }
