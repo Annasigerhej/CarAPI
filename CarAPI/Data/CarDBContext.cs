@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using CarAPI.Models;
 
 namespace CarAPI.Data
 {
@@ -9,17 +10,11 @@ namespace CarAPI.Data
         }
 
         // Add DbSet properties for your entity models here
-        // For example:
-        // public DbSet<Car> Cars { get; set; }
+        public DbSet<Car> Cars { get; set; } = null!;
+        public DbSet<Make> Makes { get; set; } = null!;
+        public DbSet<Model> Models { get; set; } = null!;
+        public DbSet<Style> Styles { get; set; } = null!;
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            // Configure your entity model relationships and constraints here
-            // For example:
-            // modelBuilder.Entity<Car>()
-            //     .HasOne(c => c.Owner)
-            //     .WithMany(o => o.Cars)
-            //     .HasForeignKey(c => c.OwnerId);
-        }
+
     }
 }
