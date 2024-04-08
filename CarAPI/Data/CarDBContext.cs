@@ -8,7 +8,6 @@ namespace CarAPI.Data
         public CarDBContext(DbContextOptions<CarDBContext> options) : base(options)
         {
         }
-
         // Add DbSet properties for your entity models here
         public DbSet<Car> Cars { get; set; } = null!;
         public DbSet<Make> Makes { get; set; } = null!;

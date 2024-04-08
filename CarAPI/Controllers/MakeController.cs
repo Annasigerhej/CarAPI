@@ -12,47 +12,47 @@ namespace CarAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CarTestController : ControllerBase
+    public class MakeController : ControllerBase
     {
         private readonly CarDBContext _context;
 
-        public CarTestController(CarDBContext context)
+        public MakeController(CarDBContext context)
         {
             _context = context;
         }
 
-        // GET: api/CarTest
+        // GET: api/Make
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Car>>> GetCars()
+        public async Task<ActionResult<IEnumerable<Make>>> GetMakes()
         {
-            return await _context.Cars.ToListAsync();
+            return await _context.Makes.ToListAsync();
         }
 
-        // GET: api/CarTest/5
+        // GET: api/Make/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Car>> GetCar(int id)
+        public async Task<ActionResult<Make>> GetMake(int id)
         {
-            var car = await _context.Cars.FindAsync(id);
+            var make = await _context.Makes.FindAsync(id);
 
-            if (car == null)
+            if (make == null)
             {
                 return NotFound();
             }
 
-            return car;
+            return make;
         }
 
-        // PUT: api/CarTest/5
+        // PUT: api/Make/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutCar(int id, Car car)
+        public async Task<IActionResult> PutMake(int id, Make make)
         {
-            if (id != car.LicensePlate)
+            if (id != make.MakeId)
             {
                 return BadRequest();
             }
 
-            _context.Entry(car).State = EntityState.Modified;
+            _context.Entry(make).State = EntityState.Modified;
 
             try
             {
@@ -60,7 +60,7 @@ namespace CarAPI.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!CarExists(id))
+                if (!MakeExists(id))
                 {
                     return NotFound();
                 }
@@ -73,37 +73,37 @@ namespace CarAPI.Controllers
             return NoContent();
         }
 
-        // POST: api/CarTest
+        // POST: api/Make
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Car>> PostCar(Car car)
+        public async Task<ActionResult<Make>> PostMake(Make make)
         {
-            _context.Cars.Add(car);
+            _context.Makes.Add(make);
             await _context.SaveChangesAsync();
 
-            // return CreatedAtAction("GetCar", new { id = car.LicensePlate }, car);
-              return CreatedAtAction(nameof(GetCar), new { id = car.LicensePlate }, car);
+            // return CreatedAtAction("GetMake", new { id = make.MakeId }, make);
+             return CreatedAtAction(nameof(GetMake), new { id = make.MakeId }, make);
         }
 
-        // DELETE: api/CarTest/5
+        // DELETE: api/Make/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteCar(int id)
+        public async Task<IActionResult> DeleteMake(int id)
         {
-            var car = await _context.Cars.FindAsync(id);
-            if (car == null)
+            var make = await _context.Makes.FindAsync(id);
+            if (make == null)
             {
                 return NotFound();
             }
 
-            _context.Cars.Remove(car);
+            _context.Makes.Remove(make);
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
 
-        private bool CarExists(int id)
+        private bool MakeExists(int id)
         {
-            return _context.Cars.Any(e => e.LicensePlate == id);
+            return _context.Makes.Any(e => e.MakeId == id);
         }
     }
 }
